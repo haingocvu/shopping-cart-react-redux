@@ -1,18 +1,18 @@
-import * as acTionType from "./../constants/ActionType";
+import * as ActionType from "./../constants/ActionType";
 
 const addProductToCart = (product, quantity) => {
     return {
-        type: acTionType.ADD_PRODUCT_TO_CART,
+        type: ActionType.ADD_PRODUCT_TO_CART,
         product,
         quantity
     }
 }
 
-const showMessage = message => {
+const changeMessage = message => {
     return {
-        type: acTionType.SHOW_MESSAGE,
+        type: ActionType.CHANGE_MESSAGE,
         message
     }
 }
 
-export { addProductToCart, showMessage };
+export { addProductToCart, changeMessage };

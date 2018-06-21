@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { randomString } from "./../utils/random";
+import * as Message from "./../constants/Message";
 
 class Product extends Component {
     render() {
-        let { product, onAddProductToCart } = this.props;
+        let { product, onAddProductToCart, onChangeMessage } = this.props;
         return (
             <div className="col-lg-4 col-md-6 mb-r">
                 <div className="card text-center card-cascade narrower">
@@ -36,7 +37,10 @@ class Product extends Component {
                                     data-toggle="tooltip" data-placement="top" 
                                     title="" 
                                     data-original-title="Add to Cart"
-                                    onClick={ () => onAddProductToCart(product, 1) }
+                                    onClick={ () => {
+                                        onAddProductToCart(product, 1);
+                                        onChangeMessage(Message.MSG_ADD_PRODUCT_TO_CART_SUCCESS)
+                                    } }
                                 >
                                     <i className="fa fa-shopping-cart"></i>
                                 </a>
