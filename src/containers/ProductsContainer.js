@@ -4,6 +4,7 @@ import Products from "./../components/Products";
 import { map } from "lodash";
 import Product from "./../components/Product";
 import PropTypes from 'prop-types';
+import * as Actions from "./../actions/index";
 
 class ProductsContainer extends Component {
     render() {
@@ -18,7 +19,7 @@ class ProductsContainer extends Component {
     showProducts(products) {
         let rs = [];
         rs = map(products, (product, index) => {
-            return <Product key={ index } product={ product } />
+            return <Product key={ index } product={ product } onAddProductToCart={ this.props.onAddProductToCart } />
         })
         return rs;
     }
@@ -44,4 +45,12 @@ const mapStateToProp = state => {
     }
 }
 
-export default connect(mapStateToProp, null)(ProductsContainer);
+const mapDisPatchToProp = (dispatch, prop) => {
+    return {
+        onAddProductToCart: (product, quantity) => {
+            dispatch(Actions.addProductToCart(product, quantity))
+        }
+    }
+}
+
+export default connect(mapStateToProp, mapDisPatchToProp)(ProductsContainer);

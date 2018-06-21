@@ -18,7 +18,7 @@ let initialState = [
         rating: 4
     },
     {
-        id: 1,
+        id: 3,
         name: 'sony z10',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA5g5QZbc5Wfrenters1N5Y8thARjUyucq-zBrtsjzuQD0qy4nFA',
         description: 'san pham cua sony',
