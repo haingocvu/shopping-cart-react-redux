@@ -10,10 +10,10 @@ class Cart extends Component {
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Sản Phẩm</th>
-                                <th>Giá</th>
-                                <th>Số Lượng</th>
-                                <th>Tổng Cộng</th>
+                                <th>name</th>
+                                <th>price</th>
+                                <th>quantity</th>
+                                <th>total</th>
                                 <th></th>
                             </tr>
                         </thead>

@@ -8,4 +8,11 @@ const addProductToCart = (product, quantity) => {
     }
 }
 
-export { addProductToCart };
+const showMessage = message => {
+    return {
+        type: acTionType.SHOW_MESSAGE,
+        message
+    }
+}
+
+export { addProductToCart, showMessage };
