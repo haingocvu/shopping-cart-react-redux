@@ -18,6 +18,7 @@ class CartContainer extends Component {
         );
     }
     showCartItem = cart => {
+        let { onRemoveProductInCart, onChangeMessage, onUpdateProductQuantityInCart } = this.props;
         let rs = null;
         if(cart.length) {
             rs = map(cart, (item, index) => {
@@ -25,8 +26,9 @@ class CartContainer extends Component {
                     <CartItem 
                         item={ item } 
                         key={ index } 
-                        onRemoveProductInCart={ this.props.onRemoveProductInCart }
-                        onChangeMessage={ this.props.onChangeMessage }
+                        onRemoveProductInCart={ onRemoveProductInCart }
+                        onChangeMessage={ onChangeMessage }
+                        onUpdateProductQuantityInCart = { onUpdateProductQuantityInCart }
                     />
                 )
             })
@@ -64,7 +66,10 @@ CartContainer.propTypes = {
             rating: PropTypes.number.isRequired
         }),
         quantity: PropTypes.number.isRequired
-    }))
+    })),
+    onRemoveProductInCart: PropTypes.func.isRequired,
+    onChangeMessage: PropTypes.func.isRequired,
+    onUpdateProductQuantityInCart: PropTypes.func.isRequired,
 }
 
 const mapStateToProp = state => {
@@ -80,6 +85,9 @@ const mapDispatchToProp = (dispatch, prop) => {
         },
         onChangeMessage: message => {
             dispatch(Action.changeMessage(message))
+        },
+        onUpdateProductQuantityInCart: (product, quantity) => {
+            dispatch(Action.updateProductQuantityInCart(product, quantity))
         }
     }
 }

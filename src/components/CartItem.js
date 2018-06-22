@@ -19,12 +19,18 @@ class CartItem extends Component {
                 <td className="center-on-small-only">
                     <span className="qty">{ item.quantity } </span>
                     <div className="btn-group radio-group" data-toggle="buttons">
-                        <label className="btn btn-sm btn-primary
-                            btn-rounded waves-effect waves-light">
+                        <label 
+                            className="btn btn-sm btn-primary
+                                btn-rounded waves-effect waves-light"
+                            onClick={ () => this.handleUpdateProductQuantityInCart(item.product, item.quantity - 1) }
+                        >
                             <a>—</a>
                         </label>
-                        <label className="btn btn-sm btn-primary
-                            btn-rounded waves-effect waves-light">
+                        <label 
+                            className="btn btn-sm btn-primary
+                                btn-rounded waves-effect waves-light"
+                            onClick={ () => this.handleUpdateProductQuantityInCart(item.product, item.quantity + 1) }
+                        >
                             <a>+</a>
                         </label>
                     </div>
@@ -51,6 +57,14 @@ class CartItem extends Component {
         let { onRemoveProductInCart, onChangeMessage } = this.props;
         onRemoveProductInCart(product);
         onChangeMessage(Message.MSG_DELETE_PRODUCT_IN_CART_SUCCESS);
+    }
+
+    handleUpdateProductQuantityInCart = (product, newQuantity) => {
+        if(newQuantity > 0) {
+            let { onUpdateProductQuantityInCart, onChangeMessage } = this.props;
+            onUpdateProductQuantityInCart(product, newQuantity);
+            onChangeMessage(Message.MSG_UPDATE_PRODUCT_QUANTITY_IN_CART_SUCCESS);
+        }
     }
 
     showSubTotal = (quantity, price) => {

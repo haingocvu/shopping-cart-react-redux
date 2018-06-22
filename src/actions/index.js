@@ -22,4 +22,12 @@ const removeProductInCart = product => {
     }
 }
 
-export { addProductToCart, changeMessage, removeProductInCart };
+const updateProductQuantityInCart = (product, quantity) => {
+    return {
+        type: ActionType.UPDATE_PRODUCT_QUANTITY_IN_CART,
+        product,
+        quantity
+    }
+}
+
+export { addProductToCart, changeMessage, removeProductInCart, updateProductQuantityInCart };
