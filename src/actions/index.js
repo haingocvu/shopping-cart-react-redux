@@ -15,4 +15,11 @@ const changeMessage = message => {
     }
 }
 
-export { addProductToCart, changeMessage };
+const removeProductInCart = product => {
+    return {
+        type: ActionType.REMOVE_PRODUCT_IN_CART,
+        product
+    }
+}
+
+export { addProductToCart, changeMessage, removeProductInCart };

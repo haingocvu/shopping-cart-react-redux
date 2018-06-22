@@ -5,6 +5,7 @@ import Cart from "./../components/Cart";
 import { map, forEach } from "lodash";
 import CartItem, { } from "./../components/CartItem";
 import CartResult from "./../components/CartResult";
+import * as Action from "./../actions/index";
 
 class CartContainer extends Component {
     render() {
@@ -21,7 +22,12 @@ class CartContainer extends Component {
         if(cart.length) {
             rs = map(cart, (item, index) => {
                 return (
-                    <CartItem item={ item } key={ index } />
+                    <CartItem 
+                        item={ item } 
+                        key={ index } 
+                        onRemoveProductInCart={ this.props.onRemoveProductInCart }
+                        onChangeMessage={ this.props.onChangeMessage }
+                    />
                 )
             })
         }
@@ -67,4 +73,15 @@ const mapStateToProp = state => {
     }
 }
 
-export default connect(mapStateToProp, null)(CartContainer);
+const mapDispatchToProp = (dispatch, prop) => {
+    return {
+        onRemoveProductInCart: product => {
+            dispatch(Action.removeProductInCart(product))
+        },
+        onChangeMessage: message => {
+            dispatch(Action.changeMessage(message))
+        }
+    }
+}
+
+export default connect(mapStateToProp, mapDispatchToProp)(CartContainer);
